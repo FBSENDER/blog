@@ -1,0 +1,28 @@
+<% content_for :title do %><%=@content.title %><% end %>
+<div class="content_nav clearfix">
+	<div class="nav_icon">
+		<a href=""><i class="unordered list icon"></i></a>
+	</div>
+</div>
+
+<div class="container">
+	<div class="con_article">
+		<div class="preview">
+			<h1 class="title"><%= @content.title %></h1>
+			<div class="meta-top">
+				<a href=""><%= @content.user.name %></a>
+				<span><%= @content.created_at.strftime("%Y-%m-%d") %></span>
+				<span><%= @content.read_count || 0 %>次阅读</span>
+			</div>
+			<div class="show_content markdown-body">
+				<%== @res %>
+			</div>
+
+			<div class="like">
+				<a class="btn">
+					<span><i class="heart empty icon"></i><%= @content.praise_count || 0 %>个喜欢</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

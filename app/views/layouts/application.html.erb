@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "十号楼的博客" %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="left_nav clearfix">
+		<div class="dropdown">
+			<a href="/" style="color: white;"><b>首</b></a>
+		</div>
+	</div>
+	<%= yield %>
+</body>
+</html>

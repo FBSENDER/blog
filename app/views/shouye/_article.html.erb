@@ -1,0 +1,13 @@
+<div class="article">
+	<a class="title" target="_blank" href="/content_1/"><%= article.title %></a>
+	<br>
+	<a class="jianjie"><%= article.short_content %></a>
+	<div class="article_info">
+		<a href=""><%= article.user.name %></a>
+		<i class="book icon"></i>
+		<a href=""><%= article.type.type_name %></a>
+		<a href="" target="_blank">
+			<i class="comment icon"></i><%= article.praise_count %>
+		</a>
+	</div>
+</div>	
