@@ -5,6 +5,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="keywords" content="<%= content_for?(:keywords_content) ? yield(:keywords_content) : '十号楼,十号楼的博客,姚露' %>">
+  <meta name="description" contetn="<%= content_for?(:des_content) ? yield(:des_content) : '欢迎关注十号楼的博客,我是姚露,沟通交流发我邮件y1150264176@163.com' %>">
+  <meta name="author" content="姚露">
 </head>
 <body>
 	<div class="left_nav clearfix">

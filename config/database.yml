@@ -26,4 +26,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: blog
+  host: 127.0.0.1
+  username: yaolu
+  password: yaolu
