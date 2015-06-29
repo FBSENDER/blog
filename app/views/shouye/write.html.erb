@@ -1,0 +1,37 @@
+<% content_for :title do %>新博客<% end %>
+
+<div class="content_nav clearfix">
+	<div class="nav_icon">
+		<a href=""><i class="unordered list icon"></i></a>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="con_article">
+		<%= form_tag("/submit", id: "form_content", method: "post" , remote: true) do %>
+		<div class="ui form">
+			<div class="field">
+			<%= text_field_tag 'title' ,nil, placeholder: "标题" %>
+			</div>
+			<div class="field">
+			<%= text_field_tag 'keyword' ,nil, placeholder: "关键词" %>
+			</div>
+			<div class="field">
+			<%= select_tag "type" , options_from_collection_for_select(Type.all, "id", "type_name") %>
+			</div>
+			<div class="field">
+			<%= text_field_tag 'jianjie' ,nil, placeholder: "文章简介" %>
+			</div>
+
+			<div class="field">
+			<label>正文</label>
+			<%= text_area_tag "content", nil, style: "height: 700px;"%>
+			</div>
+			<div class="field">
+			<%= submit_tag "提交" ,class: "ui green button" %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

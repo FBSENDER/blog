@@ -5,7 +5,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'shouye#index'
 
+  post '/submit' => 'shouye#submit'
+  get '/write/' => 'shouye#write'
   get '/content_:id/' => 'shouye#content'
+
+  get '/login' => 'shouye#login'
+  get '/logout' => 'shouye#logout'
+  post '/login' => 'shouye#login_auth'
+  get '/type_:typeid/' =>'shouye#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
