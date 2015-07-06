@@ -1,10 +1,9 @@
 class ShouyeController < ApplicationController
   before_action :autherize, only: [:write]
   # http_basic_authenticate_with name: "humbaba", password: "5baa61e4"
-  force_ssl 
+  # force_ssl 
 
   def index
-    redirect_to protocol: 'https://'
     typeid = params[:typeid]
 
     if typeid
@@ -23,6 +22,12 @@ class ShouyeController < ApplicationController
 
   def write
 
+  end
+
+  def ajax
+    c_id = params[:id]
+    row = Content.find(c_id)
+    render json: {title: row.title, content: row.content, short_content: row.short_content}.to_json
   end
 
   def submit

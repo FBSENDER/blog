@@ -12,6 +12,8 @@
 
 <div class="container">
 	<div class="con_article">
+		<% if session[:username] == @content.user.name %>
+		<button id="content_edit" class="ui red button" style="float: right; vertical-align: center;">编辑</button><% end %>
 		<div class="preview">
 			<h1 class="title"><%= @content.title %></h1>
 			<div class="meta-top">
@@ -19,7 +21,7 @@
 				<span><%= @content.created_at.strftime("%Y-%m-%d") %></span>
 				<span><%= @content.read_count || 0 %>次阅读</span>
 			</div>
-			<div class="show_content markdown-body">
+			<div id="content_body" class="show_content markdown-body">
 				<%== @res %>
 			</div>
 
@@ -31,3 +33,21 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$("#content_edit").on("click", function(){
+		if($(this).text() == "提交"){
+
+		}else{
+		content_id = window.location.href.match(/content_(\d+)/)[1];
+		$(this).text("提交");
+		s = $.ajax({
+			url: "/ajax?id="+content_id,
+			type: "post",
+			async: true,
+			dataType: "json"
+		});
+		alert(s);
+	}
+	})
+</script>
