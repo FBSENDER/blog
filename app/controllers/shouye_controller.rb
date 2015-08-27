@@ -2,7 +2,7 @@ class ShouyeController < ApplicationController
   before_action :autherize, only: [:write]
   # http_basic_authenticate_with name: "humbaba", password: "5baa61e4"
   # force_ssl 
-
+  require 'html_with_pygments'
   def index
     typeid = params[:typeid]
 
@@ -16,7 +16,7 @@ class ShouyeController < ApplicationController
   def content
     id = params[:id]
     @content = Content.find(id)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink:true, tables:true)
+    markdown = Redcarpet::Markdown.new(HTMLwithPygments.new(:hard_wrap => true),  autolink:true, no_intra_emphasis:true, tables:true, fenced_code_blocks:true)
     @res = markdown.render(@content.content)
   end
 

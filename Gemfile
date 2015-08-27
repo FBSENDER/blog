@@ -34,7 +34,7 @@ gem 'turbolinks'
 
 gem 'redcarpet' , '>= 2.3.0'
 gem 'puma'
-
+gem 'coderay'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

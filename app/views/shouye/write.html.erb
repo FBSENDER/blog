@@ -10,7 +10,7 @@
 <div class="container">
 	<div class="con_article">
 		<%= form_tag("/submit", id: "form_content", method: "post" , remote: true) do %>
-		<div class="ui form">
+		<div class="ui form" style="height: 100%;overflow: auto ; display: block;">
 			<div class="field">
 			<%= text_field_tag 'title' ,nil, placeholder: "标题" %>
 			</div>
@@ -26,7 +26,7 @@
 
 			<div class="field">
 			<label>正文</label>
-			<%= text_area_tag "content", nil, style: "height: 700px;"%>
+			<%= text_area_tag "content", nil, id: "contain_content" %>
 			</div>
 			<div class="field">
 			<%= submit_tag "提交" ,class: "ui green button" %>
