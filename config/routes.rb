@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/login' => 'shouye#login'
   get '/logout' => 'shouye#logout'
   post '/login' => 'shouye#login_auth'
-  get '/type_:typeid/' =>'shouye#index'
+  get '/type_:typeid/' =>'shouye#type'
   post '/ajax' => 'shouye#ajax'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

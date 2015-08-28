@@ -4,19 +4,18 @@ class ShouyeController < ApplicationController
   # force_ssl 
   require 'html_with_pygments'
   def index
-    typeid = params[:typeid]
+    @content = Content.order("updated_at DESC")
+  end
 
-    if typeid
-      @content = Content.where("type_id = ?", typeid.to_i)
-    else
-      @content = Content.order("updated_at DESC")
-    end
+  def type
+    typeid = params[:typeid]    
+    @content = Content.where("type_id = ?", typeid.to_i)
   end
 
   def content
     id = params[:id]
     @content = Content.find(id)
-    markdown = Redcarpet::Markdown.new(HTMLwithPygments.new(:hard_wrap => true),  autolink:true, no_intra_emphasis:true, tables:true, fenced_code_blocks:true)
+    markdown = Redcarpet::Markdown.new(HTMLwithPygments.new(:hard_wrap => true),quote: true, underline: true, highlight: true, superscript:true, autolink:true, no_intra_emphasis:true, tables:true, fenced_code_blocks:true)
     @res = markdown.render(@content.content)
   end
 

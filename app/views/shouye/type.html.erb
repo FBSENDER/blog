@@ -1,0 +1,43 @@
+<div class="row_fluid">
+	<div class="left_aside">
+		<div class="cover_img" style="background-image: url(<%= asset_path 'left.jpg' %>)"></div>
+		<div class="bottom_block">
+			<h1>十号楼的博客</h1>
+			<h3>交流,分享,沟通</h3>
+			<p>我是十号楼，这是我的个人博客，我的qq: 1150264176</p>
+			<a class="ui green button" target="_blank" href="/write/">撰写博客</a>
+		</div>
+	</div>
+
+	<div class="content">
+		<div class="page_title">
+			<ul>
+				<li class="active"><a href="">今日看点</a></li>
+				<li><a href="">热门文章</a></li>
+			</ul>
+		</div>
+		<div id="list-container">
+			<ul class="sort_nav clearfix">
+				<li class="active"><a href="/">全部</a></li>
+				<% Type.find_each do |row| %>
+				<li><a href="/type_<%= row.type_id %>/"><%= row.type_name %></a></li>
+				<% end %>
+			</ul>
+			<ul class="thumbnails">
+			<% @content.each do |row| %>
+				<li>
+					<%= render :partial=>"article", :object => row , :as=>:article %>			
+				</li>
+			<% end %>
+			</ul>
+		</div>
+	</div>
+	<div class="navbar_user">
+		<% if session[:username].nil? %>
+			<a class="login" href="/login/"><i class="sign in icon"></i>登录</a> 
+			<a class="login" href="/regist/"><i class="user icon"></i>注册</a> 
+		<% else %>
+			<a class="login" href="/logout/"><i class="sign out icon"></i><%= session[:username] %></a> 
+		<% end%>
+	</div>
+</div>
